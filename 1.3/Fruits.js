@@ -1,11 +1,3 @@
-/*
- * Title: React JS File
- * Description: A React JS Implementation of efficient DOM manipulation
- * Author: Sumit Saha ( Learn with Sumit )
- * Date: 07/01/2023
- *
- */
-
 const domContainer = document.querySelector("#root");
 
 const Fruits = () => {

@@ -1,11 +1,3 @@
-/*
- * Title: Counter Component
- * Description: A simple React Component that implements a simple counter that adds 1 to each user click
- * Author: Sumit Saha ( Learn with Sumit )
- * Date: 07/01/2023
- *
- */
-
 const domContainer = document.querySelector("#root");
 
 const Increment = () => {

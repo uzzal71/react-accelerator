@@ -1,11 +1,3 @@
-/*
- * Title: Main Script file
- * Description: A vanilla JS Implementation of reduntant DOM manipulation
- * Author: Sumit Saha ( Learn with Sumit )
- * Date: 02/08/2021
- *
- */
-
 Array.prototype.myPush = function(...a) {
   this.push(a[0]);
   init();
