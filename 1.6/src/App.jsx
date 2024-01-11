@@ -1,9 +1,11 @@
-const today = new Date();
+import TodoList from "./components/TodoList";
 
-function formatDate(date) {
-  return new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(date);
+function App() {
+  return (
+    <div>
+      <TodoList />
+    </div>
+  );
 }
 
-export default function App() {
-  return <h1>To Do List for {formatDate(today)}</h1>;
-}
+export default App;
