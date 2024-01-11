@@ -1,6 +1,6 @@
 export default function Test() {
   return (
-    <div>
+    <>
       <h1>Hedy Lamarrs Todos</h1>
       <img
         src="https://i.imgur.com/yXOvdOSs.jpg"
@@ -12,6 +12,6 @@ export default function Test() {
         <li>Rehearse a movie scene</li>
         <li>Improve the spectrum technology</li>
       </ul>
-    </div>
+    </>
   );
 }
