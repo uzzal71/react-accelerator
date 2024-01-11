@@ -12,6 +12,7 @@ export default function Test() {
         <li>Rehearse a movie scene</li>
         <li>Improve the spectrum technology</li>
         <li>Bangladesh</li>
+        <li>Dhaka</li>
       </ul>
     </>
   );
