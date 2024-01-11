@@ -1,11 +1,9 @@
-import Test from "./components/Test";
+const today = new Date();
 
-function App() {
-  return (
-    <div>
-      <Test />
-    </div>
-  );
+function formatDate(date) {
+  return new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(date);
 }
 
-export default App;
+export default function App() {
+  return <h1>To Do List for {formatDate(today)}</h1>;
+}
