@@ -1,3 +1,11 @@
-export default function Profile() {
-  return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
+import Avatar from "./Avatar";
+import Info from "./Info";
+
+export default function Profile(props) {
+  return (
+    <>
+      <Avatar {...props} />
+      <Info age={props.age} />
+    </>
+  );
 }
