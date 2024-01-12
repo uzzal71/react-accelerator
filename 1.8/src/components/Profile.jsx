@@ -1,11 +1,11 @@
-import Avatar from "./Avatar";
 import Info from "./Info";
 
-export default function Profile(props) {
+export default function Profile({ children }) {
+  const { age } = children.props;
   return (
     <>
-      <Avatar {...props} />
-      <Info age={props.age} />
+      {children}
+      <Info age={age} />
     </>
   );
 }

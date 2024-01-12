@@ -1,3 +1,4 @@
+import Avatar from "./components/Avatar";
 import Profile from "./components/Profile";
 
 function App() {
@@ -7,7 +8,9 @@ function App() {
 
   return (
     <div>
-      <Profile person={person} size={size} age={age} />
+      <Profile>
+        <Avatar person={person} size={size} age={age} />
+      </Profile>
     </div>
   );
 }
