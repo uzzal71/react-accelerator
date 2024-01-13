@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Search from "./components/Search";
 import StudentList from "./components/StudentList";
+import data from "./utils/data.json";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           </div>
 
           <div className="max-w-[848px] mx-auto overflow-auto">
-            <StudentList />
+            {data && <StudentList data={data} />}
           </div>
         </div>
       </section>
