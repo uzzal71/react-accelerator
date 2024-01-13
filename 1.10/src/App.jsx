@@ -1,9 +1,9 @@
-import PackingList from "./components/PackingList";
+import People from "./components/People";
 
 function App() {
   return (
     <div>
-      <PackingList />
+      <People />
     </div>
   );
 }
