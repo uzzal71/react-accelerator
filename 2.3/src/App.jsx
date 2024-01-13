@@ -1,26 +1,26 @@
-function Button({ onClick, children }) {
-  return (
-    <button
-      onClick={(e) => {
-        e.stopPropagation();
-        onClick();
-      }}
-    >
-      {children}
-    </button>
-  );
-}
+import { useState } from "react";
+import { sculptureList } from "./data.js";
 
 export default function App() {
+  let [index, setIndex] = useState(0);
+
+  function handleClick() {
+    setIndex(index + 1);
+  }
+
+  let sculpture = sculptureList[index];
   return (
-    <div
-      className="Toolbar"
-      onClick={() => {
-        alert("You clicked on the toolbar!");
-      }}
-    >
-      <Button onClick={() => alert("Playing!")}>Play Movie</Button>
-      <Button onClick={() => alert("Uploading!")}>Upload Image</Button>
-    </div>
+    <>
+      <button onClick={handleClick}>Next</button>
+      <h2>
+        <i>{sculpture.name} </i>
+        by {sculpture.artist}
+      </h2>
+      <h3>
+        ({index + 1} of {sculptureList.length})
+      </h3>
+      <img src={sculpture.url} alt={sculpture.alt} />
+      <p>{sculpture.description}</p>
+    </>
   );
 }
