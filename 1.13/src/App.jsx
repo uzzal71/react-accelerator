@@ -98,8 +98,8 @@ export default function Game() {
   });
 
   return (
-    <div>
-      <div>
+    <div className="flex justify-center p-4">
+      <div className="mr-16">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div>
