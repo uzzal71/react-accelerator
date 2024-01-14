@@ -1,11 +1,9 @@
-import Form from "./components/Form";
-import User from "./components/User";
+import List from "./components/List";
 
 export default function App() {
   return (
     <div>
-      <User />
-      <Form />
+      <List />
     </div>
   );
 }
