@@ -6,7 +6,6 @@ Feature List of Task Small projects
 - Delete A Task
 - Delete all Tasks
 - Add a Task
-- Add a Task
 - Edit a Task
 - Mark a Task Fav/UnFavorite
 - Search Tasks
