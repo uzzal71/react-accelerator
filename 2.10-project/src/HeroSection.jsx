@@ -1,4 +1,4 @@
-import frame from "./assets/frame.png";
+import Frame from "./assets/frame.png";
 
 export default function HeroSection() {
   return (
@@ -8,7 +8,7 @@ export default function HeroSection() {
           <div className="flex justify-center md:order-2">
             <img
               className="max-md:w-full"
-              src={frame}
+              src={Frame}
               width="326"
               height="290"
               alt="frame"
