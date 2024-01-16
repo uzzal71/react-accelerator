@@ -3,13 +3,15 @@ import { useState } from "react";
 export default function AddTaskModal({ onSave, onCloseClick, taskToUpdate }) {
   const [task, setTask] = useState(
     taskToUpdate || {
+      id: crypto.randomUUID(),
       title: "",
       description: "",
       tags: [],
-      priority: "High",
+      priority: "",
       isFavorite: false,
     }
   );
+  console.log(task);
   const [isAdd, setIsAdd] = useState(Object.is(taskToUpdate, null));
 
   const handleChange = (e) => {

@@ -17,23 +17,38 @@ export default function TaskBoard() {
   };
 
   const [tasks, setTasks] = useState([defaultTask]);
-  const [showAddModal, setShowAddModel] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
   const [taskToUpdate, setTaskToUpdate] = useState(null);
 
   function handleAddEditTask(newTask, isAdd) {
     if (isAdd) {
       setTasks([...tasks, newTask]);
-      setShowAddModel(false);
+      setShowAddModal(false);
     } else {
+      setTasks(
+        tasks.map((task) => {
+          if (task.id === newTask.id) {
+            return newTask;
+          }
+          return task;
+        })
+      );
     }
+    setShowAddModal(false);
   }
 
-  function handleRemoveAllTask() {
+  function handleEditTask(task) {
+    setTaskToUpdate(task);
+    setShowAddModal(true);
+  }
+
+  function handleDeleteAllClick() {
     setTasks([]);
   }
 
   function handleCloseClick() {
-    setShowAddModel(false);
+    setShowAddModal(false);
+    setTaskToUpdate(null);
   }
 
   return (
@@ -51,10 +66,14 @@ export default function TaskBoard() {
         </div>
         <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
           <TaskAction
-            onAddClick={() => setShowAddModel(true)}
-            onRemovedTask={handleRemoveAllTask}
+            onAddClick={() => setShowAddModal(true)}
+            onDeleteAllClick={handleDeleteAllClick}
           />
-          {tasks.length > 0 ? <TaskList tasks={tasks} /> : <NoTasksFound />}
+          {tasks.length > 0 ? (
+            <TaskList tasks={tasks} onEdit={handleEditTask} />
+          ) : (
+            <NoTasksFound />
+          )}
         </div>
       </div>
     </section>
