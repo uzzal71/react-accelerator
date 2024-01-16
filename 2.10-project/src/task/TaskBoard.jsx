@@ -13,7 +13,7 @@ export default function TaskBoard() {
       "I want to Learn React such thanI can treat it like my slave and make it do whatever I want to do.",
     tags: ["web", "react", "js"],
     priority: "High",
-    isFavorite: true,
+    isFavorite: false,
   };
 
   const [tasks, setTasks] = useState([defaultTask]);
@@ -42,8 +42,21 @@ export default function TaskBoard() {
     setShowAddModal(true);
   }
 
+  function handleDeleteTask(taskId) {
+    const tasksAfterDelete = tasks.filter((task) => task.id !== taskId);
+    setTasks(tasksAfterDelete);
+  }
+
   function handleDeleteAllClick() {
-    setTasks([]);
+    tasks.length = 0;
+    setTasks([...tasks]);
+  }
+
+  function handleFavorite(taskId) {
+    const taskIndex = tasks.findIndex((task) => task.id === taskId);
+    const newTask = [...tasks];
+    newTask[taskIndex].isFavorite = !newTask[taskIndex].isFavorite;
+    setTasks(newTask);
   }
 
   function handleCloseClick() {
@@ -70,7 +83,12 @@ export default function TaskBoard() {
             onDeleteAllClick={handleDeleteAllClick}
           />
           {tasks.length > 0 ? (
-            <TaskList tasks={tasks} onEdit={handleEditTask} />
+            <TaskList
+              tasks={tasks}
+              onEdit={handleEditTask}
+              onDelete={handleDeleteTask}
+              onFavorite={handleFavorite}
+            />
           ) : (
             <NoTasksFound />
           )}
