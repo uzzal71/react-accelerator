@@ -22,7 +22,7 @@ export default function TaskBoard() {
   }
 
   function handleRemoveAllTask() {
-    console.log("Task removed");
+    alert("Task removed");
   }
 
   return (
