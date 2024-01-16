@@ -1,4 +1,12 @@
-export default function SearchProduct() {
+import { useState } from "react";
+
+export default function SearchProduct({ onSearch }) {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  function handelClick(e) {
+    e.preventDefault();
+    onSearch(searchTerm);
+  }
   return (
     <form>
       <div className="flex">
@@ -8,10 +16,13 @@ export default function SearchProduct() {
             id="search-dropdown"
             className="z-20 block w-full bg-white px-4 py-2.5 pr-10 text-[#1C4336] placeholder:text-[#1C4336] focus:outline-none"
             placeholder="Search Book"
+            value={searchTerm}
+            onChange={() => setSearchTerm(event.target.value)}
             required
           />
           <div className="absolute right-0 top-0 flex h-full items-center">
             <button
+              onClick={handelClick}
               type="submit"
               className="mr-1.5 flex items-center space-x-1.5 rounded-md rounded-e-lg bg-[#1C4336] px-4 py-2.5 text-sm text-white"
             >
