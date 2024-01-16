@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AddTaskModal from "./AddTaskModal";
 import NoTasksFound from "./NoTasksFound";
 import SearchTask from "./SearchTask";
 import TaskAction from "./TaskAction";
@@ -16,8 +17,10 @@ export default function TaskBoard() {
   };
 
   const [tasks, setTasks] = useState([defaultTask]);
+  const [showAddModal, setShowAddModel] = useState(false);
 
   function handleAddTask() {
+    /*
     const newTask = {
       id: crypto.randomUUID(),
       title: "Learn Go Language",
@@ -28,14 +31,27 @@ export default function TaskBoard() {
       isFavorite: false,
     };
     setTasks([...tasks, newTask]);
+    */
+    setShowAddModel(true);
   }
 
   function handleRemoveAllTask() {
-    alert("Task removed");
+    setTasks([]);
+  }
+
+  function handleCloseClick() {
+    setShowAddModel(false);
   }
 
   return (
     <section className="mb-20" id="tasks">
+      {showAddModal && (
+        <AddTaskModal
+          onSave={"a"}
+          onCloseClick={handleCloseClick}
+          taskToUpdate={"b"}
+        />
+      )}
       <div className="container">
         <div className="p-2 flex justify-end">
           <SearchTask />
