@@ -14,11 +14,20 @@ export default function TaskBoard() {
     priority: "High",
     isFavorite: true,
   };
-  // eslint-disable-next-line no-unused-vars
+
   const [tasks, setTasks] = useState([defaultTask]);
 
   function handleAddTask() {
-    alert("Task added");
+    const newTask = {
+      id: crypto.randomUUID(),
+      title: "Learn Go Language",
+      description:
+        "I want to Learn Go Language Nat such thanI can treat it like my slave and make it do whatever I want to do.",
+      tags: ["web", "go", "postgres"],
+      priority: "High",
+      isFavorite: false,
+    };
+    setTasks([...tasks, newTask]);
   }
 
   function handleRemoveAllTask() {
