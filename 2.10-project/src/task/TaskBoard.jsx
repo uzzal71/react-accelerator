@@ -17,6 +17,14 @@ export default function TaskBoard() {
   // eslint-disable-next-line no-unused-vars
   const [tasks, setTasks] = useState([defaultTask]);
 
+  function handleAddTask() {
+    alert("Task added");
+  }
+
+  function handleRemoveAllTask() {
+    console.log("Task removed");
+  }
+
   return (
     <section className="mb-20" id="tasks">
       <div className="container">
@@ -24,7 +32,10 @@ export default function TaskBoard() {
           <SearchTask />
         </div>
         <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
-          <TaskAction />
+          <TaskAction
+            addTask={handleAddTask}
+            removeTask={handleRemoveAllTask}
+          />
           {tasks.length > 0 ? <TaskList tasks={tasks} /> : <NoTasksFound />}
         </div>
       </div>
