@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function AddTaskModal({ onSave, onCloseClick, taskToUpdate }) {
+export default function AddTaskModal({ onSave, taskToUpdate, onCloseClick }) {
   const [task, setTask] = useState(
     taskToUpdate || {
       id: crypto.randomUUID(),

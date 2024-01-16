@@ -69,8 +69,8 @@ export default function TaskBoard() {
       {showAddModal && (
         <AddTaskModal
           onSave={handleAddEditTask}
-          onCloseClick={handleCloseClick}
           taskToUpdate={taskToUpdate}
+          onCloseClick={handleCloseClick}
         />
       )}
       <div className="container">
