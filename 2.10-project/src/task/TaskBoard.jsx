@@ -18,21 +18,15 @@ export default function TaskBoard() {
 
   const [tasks, setTasks] = useState([defaultTask]);
   const [showAddModal, setShowAddModel] = useState(false);
+  const [taskToUpdate, setTaskToUpdate] = useState(null);
 
-  // function handleAddTask() {
-  //   const newTask = {
-  //     id: crypto.randomUUID(),
-  //     title: "Learn Go Language",
-  //     description:
-  //       "I want to Learn Go Language Nat such thanI can treat it like my slave and make it do whatever I want to do.",
-  //     tags: ["web", "go", "postgres"],
-  //     priority: "High",
-  //     isFavorite: false,
-  //   };
-  //   setTasks([...tasks, newTask]);
-  //   */
-  //   setShowAddModel(true);
-  // }
+  function handleAddEditTask(newTask, isAdd) {
+    if (isAdd) {
+      setTasks([...tasks, newTask]);
+      setShowAddModel(false);
+    } else {
+    }
+  }
 
   function handleRemoveAllTask() {
     setTasks([]);
@@ -46,9 +40,9 @@ export default function TaskBoard() {
     <section className="mb-20" id="tasks">
       {showAddModal && (
         <AddTaskModal
-          onSave={"a"}
+          onSave={handleAddEditTask}
           onCloseClick={handleCloseClick}
-          taskToUpdate={"b"}
+          taskToUpdate={taskToUpdate}
         />
       )}
       <div className="container">
