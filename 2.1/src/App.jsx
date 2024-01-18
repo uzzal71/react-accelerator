@@ -1,12 +1,8 @@
-function AlertButton({ message, children }) {
-  return <button onClick={() => alert(message)}>{children}</button>;
-}
-
+import Button from "./components/Button";
 export default function App() {
   return (
     <div>
-      <AlertButton message="Playing!">Play Movie</AlertButton>
-      <AlertButton message="Uploading!">Upload Image</AlertButton>
+      <Button />
     </div>
   );
 }
