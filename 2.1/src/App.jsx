@@ -1,8 +1,9 @@
-import Button from "./components/Button";
+import Toolbar from "./components/Toolbar";
+
 export default function App() {
   return (
     <div>
-      <Button />
+      <Toolbar />
     </div>
   );
 }
