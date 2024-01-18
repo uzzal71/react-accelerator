@@ -1,3 +1,16 @@
+function Button({ onClick, children }) {
+  return (
+    <button
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick();
+      }}
+    >
+      {children}
+    </button>
+  );
+}
+
 export default function App() {
   return (
     <div
@@ -6,8 +19,8 @@ export default function App() {
         alert("You clicked on the toolbar!");
       }}
     >
-      <button onClick={() => alert("Playing!")}>Play Movie</button>
-      <button onClick={() => alert("Uploading!")}>Upload Image</button>
+      <Button onClick={() => alert("Playing!")}>Play Movie</Button>
+      <Button onClick={() => alert("Uploading!")}>Upload Image</Button>
     </div>
   );
 }
