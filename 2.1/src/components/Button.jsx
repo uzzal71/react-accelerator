@@ -1,3 +1,6 @@
 export default function Button() {
-  return <button>Click Me</button>;
+  function handleClick() {
+    alert("Hello World!");
+  }
+  return <button onClick={handleClick}>Click Me</button>;
 }
