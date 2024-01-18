@@ -7,7 +7,7 @@ function PlayButton({ movieName }) {
     alert(`Playing ${movieName}!`);
   }
 
-  return <Button onClick={handlePlayClick}>Play "{movieName}"</Button>;
+  return <Button onClick={handlePlayClick}>Play {movieName}</Button>;
 }
 
 function UploadButton() {
