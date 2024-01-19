@@ -1,7 +1,9 @@
+import Pointer from "./components/Pointer";
+
 function App() {
   return (
     <>
-      <div>Hello world</div>
+      <Pointer />
     </>
   );
 }
