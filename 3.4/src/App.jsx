@@ -1,9 +1,9 @@
-import Pointer from "./components/Pointer";
+import Form from "./components/Form";
 
 function App() {
   return (
     <>
-      <Pointer />
+      <Form />
     </>
   );
 }
