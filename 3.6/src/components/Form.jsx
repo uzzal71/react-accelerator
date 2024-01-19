@@ -1,44 +1,34 @@
 import { useState } from "react";
 
 export default function Form() {
-  const [inputs, setInputs] = useState([
-    {
-      id: 1,
-      label: "input",
-    },
-  ]);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
-  const handleAddInput = () => {
-    /*
-    setInputs((prev) => [
-      ...prev,
-      {
-        id: prev.length + 1,
-        label: "input",
-      },
-    ]);
-    */
-    const nextId = inputs[inputs.length - 1].id;
-    setInputs([
-      ...inputs,
-      {
-        id: nextId,
-        label: "input",
-      },
-    ]);
-  };
+  function handleFirstNameChange(e) {
+    setFirstName(e.target.value);
+  }
+
+  function handleLastNameChange(e) {
+    setLastName(e.target.value);
+  }
+
+  // derived state & calculated state
+  const fullName = `${firstName} ${lastName}`;
 
   return (
-    <div>
-      {inputs.map((input) => (
-        <div key={input.id} style={{ marginBottom: "10px" }}>
-          <input type="text" label={input.label} />
-        </div>
-      ))}
-
-      <div style={{ marginTop: "20px" }}>
-        <button onClick={handleAddInput}>Add Input</button>
-      </div>
-    </div>
+    <>
+      <h2>Let’s check you in</h2>
+      <label>
+        First name: <input value={firstName} onChange={handleFirstNameChange} />
+      </label>
+      <br />
+      <br />
+      <label>
+        Last name: <input value={lastName} onChange={handleLastNameChange} />
+      </label>
+      <p>
+        Your ticket will be issued to: <b>{fullName}</b>
+      </p>
+    </>
   );
 }

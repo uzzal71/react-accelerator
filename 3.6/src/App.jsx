@@ -1,9 +1,9 @@
-import FeedbackForm from "./components/FeedbackForm";
+import Form from "./components/Form";
 
 function App() {
   return (
     <>
-      <FeedbackForm />
+      <Form />
     </>
   );
 }
