@@ -6,7 +6,7 @@ function App() {
     <>
       <h2>City quiz</h2>
       <p>What city is located on two continents?</p>
-      <Form status="success" />
+      <Form status="error" />
     </>
   );
 }

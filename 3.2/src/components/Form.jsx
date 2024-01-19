@@ -6,11 +6,13 @@ export default function Form({ status = "empty" }) {
   return (
     <>
       <form>
-        <textarea></textarea>
+        <textarea disabled={status === "submitting"}></textarea>
         <br />
-        <button>Submit</button>
-        <p>Loading...</p>
-        <p className="Error">There was an error</p>
+        <button disabled={status === "empty" || status === "submitting"}>
+          Submit
+        </button>
+        {status === "submitting" && <p>Loading...</p>}
+        {status === "error" && <p className="Error">There was an error</p>}
       </form>
     </>
   );
