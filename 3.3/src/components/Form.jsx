@@ -12,6 +12,7 @@ export default function Form() {
 
   // handlers
   const handleTextChange = (event) => {
+    setError(null);
     setAnswer(event.target.value);
   };
 
@@ -57,6 +58,7 @@ export default function Form() {
         <button disabled={answer.length === 0 || status === "submitting"}>
           Submit
         </button>
+        {status === "submitting" && <p>Loading...</p>}
         {error !== null && <p className="Error">{error.message}</p>}
       </form>
     </>
