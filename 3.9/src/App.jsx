@@ -1,9 +1,9 @@
-import TravelPlan from "./components/TravelPlan";
+import Accordion from "./components/Accordion";
 
 function App() {
   return (
     <>
-      <TravelPlan />
+      <Accordion />
     </>
   );
 }
