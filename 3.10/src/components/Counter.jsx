@@ -1,12 +1,15 @@
 import { useState } from "react";
 
-export default function Counter() {
+export default function Counter({ isFancy }) {
   const [score, setScore] = useState(0);
   const [hover, setHover] = useState(false);
 
   let className = "counter";
   if (hover) {
     className += " hover";
+  }
+  if (isFancy) {
+    className += " fancy";
   }
 
   return (

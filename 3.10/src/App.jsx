@@ -2,19 +2,28 @@ import { useState } from "react";
 import Counter from "./components/Counter";
 
 export default function App() {
-  const [isPaused, setIsPaused] = useState(false);
+  const [isFancy, setIsFancy] = useState(false);
+
   return (
     <div>
-      {isPaused ? <p>See you later!</p> : <Counter />}
+      {isFancy ? (
+        <div>
+          <Counter isFancy={true} />
+        </div>
+      ) : (
+        <section>
+          <Counter isFancy={false} />
+        </section>
+      )}
       <label>
         <input
           type="checkbox"
-          checked={isPaused}
+          checked={isFancy}
           onChange={(e) => {
-            setIsPaused(e.target.checked);
+            setIsFancy(e.target.checked);
           }}
         />
-        Take a break
+        Use fancy styling
       </label>
     </div>
   );
