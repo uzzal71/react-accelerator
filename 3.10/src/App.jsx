@@ -1,22 +1,20 @@
+import { useState } from "react";
 import Counter from "./components/Counter";
 
-import { useState } from "react";
-
 export default function App() {
-  const [showB, setShowB] = useState(true);
+  const [isFancy, setIsFancy] = useState(false);
   return (
     <div>
-      <Counter />
-      {showB && <Counter />}
+      {isFancy ? <Counter isFancy={true} /> : <Counter isFancy={false} />}
       <label>
         <input
           type="checkbox"
-          checked={showB}
+          checked={isFancy}
           onChange={(e) => {
-            setShowB(e.target.checked);
+            setIsFancy(e.target.checked);
           }}
         />
-        Render the second counter
+        Use fancy styling
       </label>
     </div>
   );
