@@ -3,6 +3,7 @@ import Counter from "./components/Counter";
 
 export default function App() {
   const [isFancy, setIsFancy] = useState(false);
+
   return (
     <div>
       {isFancy ? <Counter isFancy={true} /> : <Counter isFancy={false} />}
