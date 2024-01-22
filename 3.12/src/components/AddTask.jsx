@@ -1,8 +1,16 @@
-export default function AddTask() {
+import { useState } from "react";
+
+export default function AddTask({ onAdd }) {
+  const [text, setText] = useState("");
+
   return (
     <>
-      <input placeholder="Add task" />
-      <button>Add</button>
+      <input
+        placeholder="Add task"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
+      <button onClick={() => onAdd(text)}>Add</button>
     </>
   );
 }

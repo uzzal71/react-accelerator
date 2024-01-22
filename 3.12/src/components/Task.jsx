@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Task({ task }) {
+export default function Task({ task, onDelete }) {
   const [isEditing, setIsEditing] = useState(false);
 
   let taskContent;
@@ -25,7 +25,7 @@ export default function Task({ task }) {
       <label>
         <input type="checkbox" />
         {taskContent}
-        <button>Delete</button>
+        <button onClick={() => onDelete(task.id)}>Delete</button>
       </label>
     </li>
   );
