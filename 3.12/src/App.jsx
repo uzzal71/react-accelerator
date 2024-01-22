@@ -6,6 +6,9 @@ import { initialTasks } from "./data/tasks";
 export default function App() {
   const [tasks, setTasks] = useState(initialTasks);
 
+  // handlers
+  const handleAddTask = () => {};
+
   return (
     <>
       <h1>Prague itinerary</h1>
