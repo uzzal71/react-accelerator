@@ -8,14 +8,14 @@ export default function Task({ task }) {
     taskContent = (
       <>
         <input type="text" value={task.text} />
-        <button>Save</button>
+        <button onClick={() => setIsEditing(false)}>Save</button>
       </>
     );
   } else {
     taskContent = (
       <>
         {task.text}
-        <button>Edit</button>
+        <button onClick={() => setIsEditing(true)}>Edit</button>
       </>
     );
   }
