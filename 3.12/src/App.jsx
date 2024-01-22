@@ -19,7 +19,7 @@ export default function App() {
   };
 
   const handleChangeTask = (newTask) => {
-    const nextTask = tasks.concat.map((task) => {
+    const nextTask = tasks.map((task) => {
       if (task.id === newTask.id) {
         return newTask;
       }
@@ -36,7 +36,11 @@ export default function App() {
     <>
       <h1>Prague itinerary</h1>
       <AddTask onAdd={handleAddTask} />
-      <TaskList tasks={tasks} onDelete={handleDeleteTask} />
+      <TaskList
+        tasks={tasks}
+        onChangeTask={handleChangeTask}
+        onDeleteTask={handleDeleteTask}
+      />
     </>
   );
 }
