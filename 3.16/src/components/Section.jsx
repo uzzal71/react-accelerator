@@ -1,3 +1,9 @@
-export default function Section({ children }) {
-  return <section className="section">{children}</section>;
+import { LevelContext } from "../contexts/LevelContext.js";
+
+export default function Section({ level, children }) {
+  return (
+    <section className="section">
+      <LevelContext.Provider value={level}>{children}</LevelContext.Provider>
+    </section>
+  );
 }
