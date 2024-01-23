@@ -14,9 +14,13 @@ export default function App() {
   };
 
   // handlers
-  const handleAddTask = (text) => {};
+  const handleAddTask = (text) => {
+    dispatch({ type: "added", text: text, id: getNextId(tasks) });
+  };
 
-  const handleChangeTask = (newTask) => {};
+  const handleChangeTask = (newTask) => {
+    dispatch({ type: "changed", task: newTask });
+  };
 
   const handleDeleteTask = (taskId) => {};
 
