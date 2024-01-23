@@ -22,7 +22,9 @@ export default function App() {
     dispatch({ type: "changed", task: newTask });
   };
 
-  const handleDeleteTask = (taskId) => {};
+  const handleDeleteTask = (taskId) => {
+    dispatch({ type: "deleted", taskId: taskId });
+  };
 
   return (
     <>
