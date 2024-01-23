@@ -14,23 +14,11 @@ export default function App() {
   };
 
   // handlers
-  const handleAddTask = (text) => {
-    setTasks([...tasks, { id: getNextId(tasks), text: text, done: false }]);
-  };
+  const handleAddTask = (text) => {};
 
-  const handleChangeTask = (newTask) => {
-    const nextTask = tasks.map((task) => {
-      if (task.id === newTask.id) {
-        return newTask;
-      }
-      return task;
-    });
-    setTasks(nextTask);
-  };
+  const handleChangeTask = (newTask) => {};
 
-  const handleDeleteTask = (taskId) => {
-    setTasks(tasks.filter((task) => task.id !== taskId));
-  };
+  const handleDeleteTask = (taskId) => {};
 
   return (
     <>
