@@ -8,24 +8,12 @@ import taskReducer from "./reducers/taskReducer";
 export default function App() {
   const [tasks, dispatch] = useImmerReducer(taskReducer, initialTasks);
 
-  const handleChangeTask = (newTask) => {
-    dispatch({ type: "changed", task: newTask });
-  };
-
-  const handleDeleteTask = (taskId) => {
-    dispatch({ type: "deleted", taskId: taskId });
-  };
-
   return (
     <TaskContext.Provider value={tasks}>
       <TaskDispatchContext.Provider value={dispatch}>
         <h1>Prague itinerary</h1>
         <AddTask />
-        <TaskList
-          tasks={tasks}
-          onChangeTask={handleChangeTask}
-          onDeleteTask={handleDeleteTask}
-        />
+        <TaskList />
       </TaskDispatchContext.Provider>
     </TaskContext.Provider>
   );

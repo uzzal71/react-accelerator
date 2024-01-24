@@ -51,7 +51,7 @@ export default function Task({ task }) {
           }
         />
         {taskContent}
-        <button onClick={() => dispatch({ type: "deleted", taskId: task.id })}>
+        <button onClick={() => dispatch({ type: "deleted", id: task.id })}>
           Delete
         </button>
       </label>
