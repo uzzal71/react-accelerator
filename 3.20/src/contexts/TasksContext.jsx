@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import { useImmerReducer } from "use-immer";
 import { initialTasks } from "../data/tasks";
 import taskReducer from "../reducers/taskReducer";
@@ -15,4 +15,12 @@ export default function TasksContextProvider({ children }) {
       </TaskDispatchContext.Provider>
     </TaskContext.Provider>
   );
+}
+
+export function useTasks() {
+  return useContext(TaskContext);
+}
+
+export function useTasksDispatch() {
+  return useContext(TaskDispatchContext);
 }
