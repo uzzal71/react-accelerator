@@ -6,7 +6,7 @@ import taskReducer from "../reducers/taskReducer";
 export const TaskContext = createContext(null);
 export const TaskDispatchContext = createContext(null);
 
-export default function TasksContextProvider({ children }) {
+export default function TasksProvider({ children }) {
   const [tasks, dispatch] = useImmerReducer(taskReducer, initialTasks);
   return (
     <TaskContext.Provider value={tasks}>
