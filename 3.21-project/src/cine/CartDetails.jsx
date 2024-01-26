@@ -7,9 +7,9 @@ import { getImageUrl } from "../utils/cine-utility";
 export default function CartDetails({ onClose }) {
   const { cartData, setCartData } = useContext(MovieContext);
 
-  const handleDeleteCart = (movie) => {
-    const filteredMovies = cartData.filter((item) => item.id !== movie.id);
-    setCartData([...filteredMovies]);
+  const handleDeleteCart = (itemId) => {
+    const filteredItem = cartData.filter((item) => item.id !== itemId);
+    setCartData([...filteredItem]);
   };
 
   return (
@@ -42,7 +42,7 @@ export default function CartDetails({ onClose }) {
                 </div>
                 <div className="flex justify-between gap-4 items-center">
                   <button
-                    onClick={() => handleDeleteCart(item)}
+                    onClick={() => handleDeleteCart(item.id)}
                     className="bg-[#D42967] rounded-md p-2 md:px-4 inline-flex items-center space-x-2 text-white"
                   >
                     <img className="w-5 h-5" src={Delete} alt="" />
