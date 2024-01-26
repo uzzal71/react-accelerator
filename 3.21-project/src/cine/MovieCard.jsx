@@ -22,13 +22,13 @@ export default function MovieCard({ movie }) {
         },
       });
       toast.success(`Added  ${movie.title} to Cart !`, {
-        position: toast.POSITION.BOTTOM_RIGHT,
+        position: "bottom-right",
       });
     } else {
       toast.error(
         `The movie ${movie.title} has been added to the cart already`,
         {
-          position: toast.POSITION.BOTTOM_RIGHT,
+          position: "bottom-right",
         }
       );
     }

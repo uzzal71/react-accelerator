@@ -15,7 +15,7 @@ export default function CartDetails({ onClose }) {
       payload: item,
     });
     toast.success(`Removed ${item.title} from Cart !`, {
-      position: toast.POSITION.BOTTOM_RIGHT,
+      position: "bottom-right",
     });
   };
 
