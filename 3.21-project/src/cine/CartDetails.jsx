@@ -54,7 +54,7 @@ export default function CartDetails({ onClose }) {
                   </div>
                   <div className="flex justify-between gap-4 items-center">
                     <button
-                      onClick={(event) => handleDeleteCart(event, item)}
+                      onClick={() => handleDeleteCart(event, item)}
                       className="bg-[#D42967] rounded-md p-2 md:px-4 inline-flex items-center space-x-2 text-white"
                     >
                       <img className="w-5 h-5" src={Delete} alt="" />
