@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { FaStar } from "react-icons/fa";
 import { TaskContext } from "../contexts/taskContext";
 
-export default function TaskList() {
+export default function TaskList({ onFavorite, onEditTask, onDeleteTask }) {
   const { state } = useContext(TaskContext);
 
   return (
@@ -40,7 +40,7 @@ export default function TaskList() {
               className="border-b border-[#2E3443] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2"
             >
               <td>
-                <button>
+                <button onClick={() => onFavorite(task.id)}>
                   {task.isFavorite ? (
                     <FaStar color="yellow" />
                   ) : (
@@ -66,8 +66,18 @@ export default function TaskList() {
               <td className="text-center">{task.priority}</td>
               <td>
                 <div className="flex items-center justify-center space-x-3">
-                  <button className="text-red-500">Delete</button>
-                  <button className="text-blue-500">Edit</button>
+                  <button
+                    onClick={() => onDeleteTask(task)}
+                    className="text-red-500"
+                  >
+                    Delete
+                  </button>
+                  <button
+                    onClick={() => onEditTask(task)}
+                    className="text-blue-500"
+                  >
+                    Edit
+                  </button>
                 </div>
               </td>
             </tr>

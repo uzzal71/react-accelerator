@@ -1,4 +1,28 @@
-export default function AddTaskModal({ onCloseClick }) {
+import { useState } from "react";
+
+export default function AddTaskModal({ onSave, taskToUpdate, onCloseClick }) {
+  const [task, setTask] = useState(
+    taskToUpdate || {
+      id: crypto.randomUUID(),
+      title: "",
+      description: "",
+      tags: [],
+      priority: "",
+      isFavorite: false,
+    }
+  );
+
+  const [isAdd, setIsAdd] = useState(Object.is(taskToUpdate, null));
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    let value = e.target.value;
+    if (name === "tags") {
+      value = value.split(",");
+    }
+    setTask({ ...task, [name]: value });
+  };
+
   return (
     <>
       <div className="bg-black bg-opacity-70 h-full w-full z-10 absolute top-0 left-0"></div>
@@ -15,6 +39,8 @@ export default function AddTaskModal({ onCloseClick }) {
               type="text"
               name="title"
               id="title"
+              value={task.title}
+              onChange={handleChange}
               required
             />
           </div>
@@ -25,6 +51,8 @@ export default function AddTaskModal({ onCloseClick }) {
               type="text"
               name="description"
               id="description"
+              value={task.description}
+              onChange={handleChange}
               required
             ></textarea>
           </div>
@@ -36,6 +64,8 @@ export default function AddTaskModal({ onCloseClick }) {
                 type="text"
                 name="tags"
                 id="tags"
+                value={task.tags}
+                onChange={handleChange}
                 required
               />
             </div>
@@ -45,12 +75,14 @@ export default function AddTaskModal({ onCloseClick }) {
                 className="block w-full cursor-pointer rounded-md bg-[#2D323F] px-3 py-2.5"
                 name="priority"
                 id="priority"
+                value={task.priority}
+                onChange={handleChange}
                 required
               >
                 <option value="">Select Priority</option>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
               </select>
             </div>
           </div>
@@ -63,6 +95,7 @@ export default function AddTaskModal({ onCloseClick }) {
             Close
           </button>
           <button
+            onClick={() => onSave(event, isAdd, task)}
             type="submit"
             className="rounded bg-blue-600 px-4 py-2 text-white transition-all hover:opacity-80"
           >
