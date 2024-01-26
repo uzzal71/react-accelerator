@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* styles.css (or your preferred stylesheet) */
+.dark {
+  @apply bg-[#171923] text-white;
+}
 
 @keyframes cartItemCountAnimation {
   0% {
