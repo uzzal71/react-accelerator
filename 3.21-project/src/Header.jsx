@@ -46,6 +46,11 @@ export default function Header() {
               href="#"
             >
               <img src={ShoppingCart} width="24" height="24" alt="cart" />
+              {cartData.length > 0 && (
+                <span className="rounded-full absolute top-[-12px] left-[28px] bg-[#12CF6F] text-white text-center p-[2px] w-[30px] h-[30px] cart-item-count-animate">
+                  {cartData.length}
+                </span>
+              )}
             </a>
           </li>
         </ul>

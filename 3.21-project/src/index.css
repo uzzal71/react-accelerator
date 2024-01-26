@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* styles.css (or your preferred stylesheet) */
+
+@keyframes cartItemCountAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cart-item-count-animate {
+  animation: cartItemCountAnimation 0.5s ease-out;
+}
