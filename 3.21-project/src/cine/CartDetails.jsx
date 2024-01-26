@@ -7,7 +7,7 @@ import { getImageUrl } from "../utils/cine-utility";
 export default function CartDetails({ onClose }) {
   const { cartData, setCartData } = useContext(MovieContext);
 
-  const handleRemoveCart = (movie) => {
+  const handleDeleteCart = (movie) => {
     const filteredMovies = cartData.filter((item) => item.id !== movie.id);
     setCartData([...filteredMovies]);
   };
@@ -20,29 +20,29 @@ export default function CartDetails({ onClose }) {
             Your Carts
           </h2>
           <div className="space-y-8 lg:space-y-12 max-h-[450px] overflow-auto mb-10 lg:mb-14">
-            {cartData.map((movie) => (
-              <div key={movie.id} className="grid grid-cols-[1fr_auto] gap-4">
+            {cartData.map((item) => (
+              <div key={item.id} className="grid grid-cols-[1fr_auto] gap-4">
                 <div className="flex items-center gap-4">
                   <img
                     className="rounded overflow-hidden"
-                    height="100"
-                    width="100"
-                    src={getImageUrl(movie.cover)}
-                    alt={movie.title}
+                    height="50"
+                    width="50"
+                    src={getImageUrl(item.cover)}
+                    alt={item.title}
                   />
                   <div>
                     <h3 className="text-base md:text-xl font-bold">
-                      {movie.title}
+                      {item.title}
                     </h3>
                     <p className="max-md:text-xs text-[#575A6E]">
-                      {movie.genre}
+                      {item.genre}
                     </p>
-                    <span className="max-md:text-xs">$100</span>
+                    <span className="max-md:text-xs">${item.price}</span>
                   </div>
                 </div>
                 <div className="flex justify-between gap-4 items-center">
                   <button
-                    onClick={() => handleRemoveCart(movie)}
+                    onClick={() => handleDeleteCart(item)}
                     className="bg-[#D42967] rounded-md p-2 md:px-4 inline-flex items-center space-x-2 text-white"
                   >
                     <img className="w-5 h-5" src={Delete} alt="" />
