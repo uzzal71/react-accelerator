@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { TaskContext } from "../contexts/taskContext";
 import AddTaskModal from "./AddTaskModal";
+import NoTasksFound from "./NoTasksFound";
 import SearchTask from "./SearchTask";
 import TaskAction from "./TaskAction";
 import TaskList from "./TaskList";
 
 export default function TaskBoard() {
   const [showAddModal, setShowAddModal] = useState(false);
+  const { state } = useContext(TaskContext);
 
   const handleCloseClick = () => {
     setShowAddModal(false);
@@ -23,7 +26,7 @@ export default function TaskBoard() {
               <TaskAction onAddClick={() => setShowAddModal(true)} />
             </div>
           </div>
-          <TaskList />
+          {state.tasks.length === 0 ? <NoTasksFound /> : <TaskList />}
         </div>
       </div>
     </section>
