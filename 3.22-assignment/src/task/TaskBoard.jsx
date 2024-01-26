@@ -11,6 +11,8 @@ import {
   ADD_TASK,
   DELETE_TASK,
   FAVORITE_TASK,
+  REMOVED_TASK,
+  SEARCH_TASK,
   UPDATE_TASK,
 } from "../reducers/taskReducerType";
 
@@ -68,10 +70,31 @@ export default function TaskBoard() {
     });
   };
 
+  const handleAllDeleteTask = (task) => {
+    dispatch({
+      type: REMOVED_TASK,
+      payload: [],
+    });
+    toast.error(`Delete all in the task list.`, {
+      position: "bottom-right",
+    });
+  };
+
   const handleCloseClick = () => {
     setShowAddModal(false);
     setTaskToUpdate(null);
   };
+
+  function handleSearch(searchTerm) {
+    const filtered = state.tasks.filter((task) =>
+      task.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    dispatch({
+      type: SEARCH_TASK,
+      payload: filtered,
+    });
+  }
 
   return (
     <section className="mb-20" id="tasks">
@@ -87,8 +110,11 @@ export default function TaskBoard() {
           <div className="mb-14 items-center justify-between sm:flex">
             <h2 className="text-2xl font-semibold max-sm:mb-4">Your Tasks</h2>
             <div className="flex items-center space-x-5">
-              <SearchTask />
-              <TaskAction onAddClick={() => setShowAddModal(true)} />
+              <SearchTask onSearch={handleSearch} />
+              <TaskAction
+                onDeleteAllTask={handleAllDeleteTask}
+                onAddClick={() => setShowAddModal(true)}
+              />
             </div>
           </div>
           {state.tasks.length === 0 ? (

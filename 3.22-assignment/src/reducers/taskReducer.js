@@ -2,6 +2,8 @@ import {
   ADD_TASK,
   DELETE_TASK,
   FAVORITE_TASK,
+  REMOVED_TASK,
+  SEARCH_TASK,
   UPDATE_TASK,
 } from "./taskReducerType";
 
@@ -45,6 +47,16 @@ const taskReducer = (state, action) => {
       return {
         ...state,
         tasks: state.tasks.filter((x) => x.id !== action.payload.id),
+      };
+    case REMOVED_TASK:
+      return {
+        ...state,
+        tasks: [],
+      };
+    case SEARCH_TASK:
+      return {
+        ...state,
+        tasks: [...action.payload],
       };
     default:
       return state;
