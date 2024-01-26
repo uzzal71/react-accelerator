@@ -4,14 +4,15 @@ import { MovieContext, ThemeContext } from "./context";
 
 function App() {
   const [cartData, setCartData] = useState([]);
+  const [darkMode, setDarkMode] = useState(true);
 
   return (
     <>
-      <MovieContext.Provider value={{ cartData, setCartData }}>
-        <ThemeContext.Provider>
+      <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
+        <MovieContext.Provider value={{ cartData, setCartData }}>
           <Page />
-        </ThemeContext.Provider>
-      </MovieContext.Provider>
+        </MovieContext.Provider>
+      </ThemeContext.Provider>
     </>
   );
 }
