@@ -13,6 +13,7 @@ export default function AddTaskModal({ onSave, taskToUpdate, onCloseClick }) {
   );
 
   const [isAdd, setIsAdd] = useState(Object.is(taskToUpdate, null));
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -21,12 +22,52 @@ export default function AddTaskModal({ onSave, taskToUpdate, onCloseClick }) {
       value = value.split(",");
     }
     setTask({ ...task, [name]: value });
+    setErrors({ ...errors, [name]: "" });
+  };
+
+  const validateForm = () => {
+    let valid = true;
+    const newErrors = {};
+
+    if (!task.title.trim()) {
+      newErrors.title = "Title is required";
+      valid = false;
+    }
+
+    if (!task.description.trim()) {
+      newErrors.description = "Description is required";
+      valid = false;
+    }
+
+    if (!task.tags || task.tags.length === 0 || !task.tags[0].trim()) {
+      newErrors.tags = "At least one tag is required";
+      valid = false;
+    }
+
+    if (!task.priority) {
+      newErrors.priority = "Priority is required";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
+  };
+
+  const handleSave = (e) => {
+    e.preventDefault();
+
+    if (validateForm()) {
+      onSave(e, isAdd, task);
+    }
   };
 
   return (
     <>
       <div className="bg-black bg-opacity-70 h-full w-full z-10 absolute top-0 left-0"></div>
-      <form className="mx-auto my-10 w-full max-w-[740px] rounded-xl border border-[#FEFBFB]/[36%] bg-[#191D26] p-9 max-md:px-4 lg:my-20 lg:p-11 z-10 absolute top-1/4 left-1/3">
+      <form
+        onSubmit={handleSave}
+        className="mx-auto my-10 w-full max-w-[740px] rounded-xl border border-[#FEFBFB]/[36%] bg-[#191D26] p-9 max-md:px-4 lg:my-20 lg:p-11 z-10 absolute top-1/4 left-1/3"
+      >
         <h2 className="mb-9 text-center text-2xl font-bold text-white lg:mb-11 lg:text-[28px]">
           Add New Task
         </h2>
@@ -41,8 +82,10 @@ export default function AddTaskModal({ onSave, taskToUpdate, onCloseClick }) {
               id="title"
               value={task.title}
               onChange={handleChange}
-              required
             />
+            {errors.title && (
+              <span className="text-red-500 font-semibold">{errors.title}</span>
+            )}
           </div>
           <div className="space-y-2 lg:space-y-3">
             <label htmlFor="description">Description</label>
@@ -53,8 +96,10 @@ export default function AddTaskModal({ onSave, taskToUpdate, onCloseClick }) {
               id="description"
               value={task.description}
               onChange={handleChange}
-              required
             ></textarea>
+            {errors.description && (
+              <p className="text-red-500">{errors.description}</p>
+            )}
           </div>
           <div className="grid-cols-2 gap-x-4 max-md:space-y-9 md:grid lg:gap-x-10 xl:gap-x-20">
             <div className="space-y-2 lg:space-y-3">
@@ -66,8 +111,8 @@ export default function AddTaskModal({ onSave, taskToUpdate, onCloseClick }) {
                 id="tags"
                 value={task.tags}
                 onChange={handleChange}
-                required
               />
+              {errors.tags && <p className="text-red-500">{errors.tags}</p>}
             </div>
             <div className="space-y-2 lg:space-y-3">
               <label htmlFor="priority">Priority</label>
@@ -77,13 +122,15 @@ export default function AddTaskModal({ onSave, taskToUpdate, onCloseClick }) {
                 id="priority"
                 value={task.priority}
                 onChange={handleChange}
-                required
               >
                 <option value="">Select Priority</option>
                 <option value="Low">Low</option>
                 <option value="Medium">Medium</option>
                 <option value="High">High</option>
               </select>
+              {errors.priority && (
+                <p className="text-red-500">{errors.priority}</p>
+              )}
             </div>
           </div>
         </div>
@@ -95,7 +142,6 @@ export default function AddTaskModal({ onSave, taskToUpdate, onCloseClick }) {
             Close
           </button>
           <button
-            onClick={() => onSave(event, isAdd, task)}
             type="submit"
             className="rounded bg-blue-600 px-4 py-2 text-white transition-all hover:opacity-80"
           >

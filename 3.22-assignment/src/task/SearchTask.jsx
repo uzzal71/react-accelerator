@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { TaskContext } from "../contexts/taskContext";
+import { SEARCH_TASK } from "../reducers/taskReducerType";
 
 export default function SearchTask({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const { state, dispatch } = useContext(TaskContext);
 
   function handleOnChange(e) {
-    setSearchTerm(e.target.value);
-    onSearch(searchTerm);
+    setSearchTerm(searchTerm);
+    const tasks = state.tasks;
+
+    const filtered = tasks.filter((task) =>
+      task.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    dispatch({
+      type: SEARCH_TASK,
+      payload: filtered,
+    });
   }
 
   return (

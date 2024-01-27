@@ -1,9 +1,32 @@
 import { useContext } from "react";
 import { FaStar } from "react-icons/fa";
+import { toast } from "react-toastify";
 import { TaskContext } from "../contexts/taskContext";
+import { DELETE_TASK, FAVORITE_TASK } from "../reducers/taskReducerType";
 
-export default function TaskList({ onFavorite, onEditTask, onDeleteTask }) {
-  const { state } = useContext(TaskContext);
+export default function TaskList({ onEditTask }) {
+  const { state, dispatch } = useContext(TaskContext);
+
+  function handleFavorite(taskId) {
+    const taskIndex = state.tasks.findIndex((task) => task.id === taskId);
+    const newTask = [...state.tasks];
+    newTask[taskIndex].isFavorite = !newTask[taskIndex].isFavorite;
+
+    dispatch({
+      type: FAVORITE_TASK,
+      payload: newTask,
+    });
+  }
+
+  const handleDeleteTask = (task) => {
+    dispatch({
+      type: DELETE_TASK,
+      payload: task,
+    });
+    toast.error(`The task "${task.title}" is removed in the task list.`, {
+      position: "bottom-right",
+    });
+  };
 
   return (
     <div className="overflow-auto">
@@ -40,7 +63,7 @@ export default function TaskList({ onFavorite, onEditTask, onDeleteTask }) {
               className="border-b border-[#2E3443] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2"
             >
               <td>
-                <button onClick={() => onFavorite(task.id)}>
+                <button onClick={() => handleFavorite(task.id)}>
                   {task.isFavorite ? (
                     <FaStar color="yellow" />
                   ) : (
@@ -67,16 +90,16 @@ export default function TaskList({ onFavorite, onEditTask, onDeleteTask }) {
               <td>
                 <div className="flex items-center justify-center space-x-3">
                   <button
-                    onClick={() => onDeleteTask(task)}
-                    className="text-red-500"
-                  >
-                    Delete
-                  </button>
-                  <button
                     onClick={() => onEditTask(task)}
                     className="text-blue-500"
                   >
                     Edit
+                  </button>
+                  <button
+                    onClick={() => handleDeleteTask(task)}
+                    className="text-red-500"
+                  >
+                    Delete
                   </button>
                 </div>
               </td>
