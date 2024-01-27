@@ -7,11 +7,11 @@ export default function SearchTask() {
   const { state, dispatch } = useContext(TaskContext);
 
   function handleOnChange(e) {
-    setSearchTerm(e.target.value);
-    const tasks = state.tasks;
+    const value = e.target.value;
+    setSearchTerm(value);
 
-    const filtered = tasks.filter((task) =>
-      task.title.toLowerCase().includes(e.target.value.toLowerCase())
+    const filtered = state.tasks.filter((task) =>
+      task.title.toLowerCase().includes(value.toLowerCase())
     );
 
     dispatch({
