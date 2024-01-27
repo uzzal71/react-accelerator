@@ -86,13 +86,16 @@ export default function TaskBoard() {
   };
 
   function handleSearch(searchTerm) {
-    const filtered = state.tasks.filter((task) =>
+    console.log(searchTerm.length);
+    const searchingData = state.tasks;
+    const filtered = searchingData.filter((task) =>
       task.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
+    console.log("State: " + searchingData.length);
+    console.log("Filtered: " + filtered.length);
     dispatch({
       type: SEARCH_TASK,
-      payload: filtered,
+      payload: [...filtered],
     });
   }
 
