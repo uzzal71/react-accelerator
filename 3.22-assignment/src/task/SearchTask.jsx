@@ -2,16 +2,16 @@ import { useContext, useState } from "react";
 import { TaskContext } from "../contexts/taskContext";
 import { SEARCH_TASK } from "../reducers/taskReducerType";
 
-export default function SearchTask({ onSearch }) {
+export default function SearchTask() {
   const [searchTerm, setSearchTerm] = useState("");
   const { state, dispatch } = useContext(TaskContext);
 
   function handleOnChange(e) {
-    setSearchTerm(searchTerm);
+    setSearchTerm(e.target.value);
     const tasks = state.tasks;
 
     const filtered = tasks.filter((task) =>
-      task.title.toLowerCase().includes(searchTerm.toLowerCase())
+      task.title.toLowerCase().includes(e.target.value.toLowerCase())
     );
 
     dispatch({
@@ -30,7 +30,7 @@ export default function SearchTask({ onSearch }) {
             className="z-20 block w-full bg-gray-800 px-4 py-2 pr-10 focus:outline-none"
             placeholder="Search Task"
             value={searchTerm}
-            onChange={(e) => handleOnChange(e)}
+            onChange={handleOnChange}
             required
           />
           <button
