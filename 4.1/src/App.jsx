@@ -1,7 +1,10 @@
+import Counter from "./components/Counter";
+
 function App() {
   return (
     <>
-      <div>Hello world</div>
+      <div>Referencing Values with Refs</div>
+      <Counter />
     </>
   );
 }
