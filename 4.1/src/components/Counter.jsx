@@ -6,11 +6,12 @@ export default function Counter() {
   const handleClick = () => {
     ref.current = ref.current + 1;
     alert(`You clicked ${ref.current} times!`);
+    console.log(ref.current);
   };
 
   return (
     <>
-      <button onClick={handleClick}>Click me!</button>
+      <button onClick={handleClick}>Click me! {ref.current}</button>
     </>
   );
 }
