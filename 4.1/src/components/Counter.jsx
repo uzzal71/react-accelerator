@@ -4,7 +4,8 @@ export default function Counter() {
   let ref = useRef(0);
 
   const handleClick = () => {
-    console.log(ref);
+    ref.current = ref.current + 1;
+    alert(`You clicked ${ref.current} times!`);
   };
 
   return (
