@@ -7,6 +7,7 @@ export default function Form() {
   function handleClick() {
     console.log(inputRef.current);
     inputRef.current.focus();
+    inputRef.current.style.borderRadius = "10px";
   }
 
   return (
