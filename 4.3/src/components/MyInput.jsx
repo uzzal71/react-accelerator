@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
 
-const MyInput = (props) => {
+const MyInput = (props, ref) => {
   return (
     <>
-      <input {...props} />
+      <input {...props} ref={ref} />
     </>
   );
 };
