@@ -3,6 +3,7 @@ import VideoPlayer from "./VideoPlayer";
 
 export default function MyComponent() {
   const [isPlaying, setIsPlaying] = useState(false);
+
   return (
     <>
       <button onClick={() => setIsPlaying(!isPlaying)}>
