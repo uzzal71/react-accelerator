@@ -1,19 +1,9 @@
-import Animation from "./components/Animation";
+import Comments from "./components/Comments";
 
 function App() {
   return (
     <div>
-      {/* example 1 */}
-      {/* <Map /> */}
-
-      {/* example 2 */}
-      {/* <Dialogue /> */}
-
-      {/* example 3 */}
-      {/* <Scroller /> */}
-
-      {/* example 4 */}
-      <Animation />
+      <Comments postId="1" />
     </div>
   );
 }
