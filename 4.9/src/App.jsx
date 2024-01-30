@@ -1,4 +1,4 @@
-import Scroller from "./components/Scroller";
+import Animation from "./components/Animation";
 
 function App() {
   return (
@@ -10,10 +10,10 @@ function App() {
       {/* <Dialogue /> */}
 
       {/* example 3 */}
-      <Scroller />
+      {/* <Scroller /> */}
 
       {/* example 4 */}
-      {/* <Animation /> */}
+      <Animation />
     </div>
   );
 }
