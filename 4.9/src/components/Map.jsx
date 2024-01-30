@@ -6,7 +6,7 @@ export default function Map() {
 
   useEffect(() => {
     console.log("zooming...");
-    mapRef.current.style.transform = "scale(1)";
+    mapRef.current.setZoomLevel(1);
   }, []);
 
   return (
