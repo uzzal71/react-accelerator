@@ -3,9 +3,10 @@ import VideoPlayer from "./VideoPlayer";
 
 export default function MyComponent() {
   const [isPlaying, setIsPlaying] = useState(false);
-
+  const [text, setText] = useState("");
   return (
     <>
+      <input value={text} onChange={(e) => setText(e.target.value)} />
       <button onClick={() => setIsPlaying(!isPlaying)}>
         {isPlaying ? "Pause" : "Play"}
       </button>
