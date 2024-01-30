@@ -1,13 +1,13 @@
-import Map from "./components/Map";
+import Dialogue from "./components/Dialogue";
 
 function App() {
   return (
     <div>
       {/* example 1 */}
-      <Map />
+      {/* <Map /> */}
 
       {/* example 2 */}
-      {/* <Dialogue /> */}
+      <Dialogue />
 
       {/* example 3 */}
       {/* <Scroller /> */}
