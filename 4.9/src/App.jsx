@@ -1,8 +1,20 @@
+import Map from "./components/Map";
+
 function App() {
   return (
-    <>
-      <div>Hello world</div>
-    </>
+    <div>
+      {/* example 1 */}
+      <Map />
+
+      {/* example 2 */}
+      {/* <Dialogue /> */}
+
+      {/* example 3 */}
+      {/* <Scroller /> */}
+
+      {/* example 4 */}
+      {/* <Animation /> */}
+    </div>
   );
 }
 
