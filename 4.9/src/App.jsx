@@ -1,4 +1,4 @@
-import Dialogue from "./components/Dialogue";
+import Scroller from "./components/Scroller";
 
 function App() {
   return (
@@ -7,10 +7,10 @@ function App() {
       {/* <Map /> */}
 
       {/* example 2 */}
-      <Dialogue />
+      {/* <Dialogue /> */}
 
       {/* example 3 */}
-      {/* <Scroller /> */}
+      <Scroller />
 
       {/* example 4 */}
       {/* <Animation /> */}
