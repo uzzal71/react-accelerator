@@ -1,11 +1,16 @@
+import { useState } from "react";
 import Playground from "./components/Playground";
 
-function App() {
+export default function App() {
+  const [show, setShow] = useState(false);
+
   return (
-    <div>
-      <Playground />
-    </div>
+    <>
+      <button onClick={() => setShow(!show)}>
+        {show ? "Unmount" : "Mount"} the component
+      </button>
+      {show && <hr />}
+      {show && <Playground />}
+    </>
   );
 }
-
-export default App;
