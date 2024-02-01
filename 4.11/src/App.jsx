@@ -1,9 +1,9 @@
-import Comments from "./components/Comments";
+import Playground from "./components/Playground";
 
 function App() {
   return (
     <div>
-      <Comments postId="5" />
+      <Playground />
     </div>
   );
 }
