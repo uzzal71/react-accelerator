@@ -8,6 +8,7 @@ function App() {
         <li>Banna</li>
         <li>Mango</li>
         <li>Capacino</li>
+        <li>Chiken</li>
       </ul>
     </div>
   );
