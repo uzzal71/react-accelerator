@@ -6,6 +6,7 @@ function App() {
       <ul>
         <li>Apple</li>
         <li>Banna</li>
+        <li>Mango</li>
       </ul>
     </div>
   );
