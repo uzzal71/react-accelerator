@@ -7,6 +7,7 @@ function App() {
         <li>Apple</li>
         <li>Banna</li>
         <li>Mango</li>
+        <li>Capacino</li>
       </ul>
     </div>
   );
