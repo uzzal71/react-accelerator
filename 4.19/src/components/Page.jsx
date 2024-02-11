@@ -17,7 +17,7 @@ export default function Page({ url, onPageChange, onAddItems }) {
   useEffect(() => {
     onVisit(url);
     // logVisit(url, numberOfItems);
-  }, [url]);
+  }, [url, onVisit]);
 
   return (
     <div>
