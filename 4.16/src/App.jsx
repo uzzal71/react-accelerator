@@ -1,44 +1,35 @@
-import { useState } from "react";
-import ChatRoom from "./components/ChatRoom";
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
-export default function App() {
-  const [roomId, setRoomId] = useState("general");
-  const [showChat, setShowChat] = useState(true);
-  const [serverUrl, setServerUrl] = useState("https://localhost:1234");
-
-  const handleRoomChange = (e) => {
-    setRoomId(e.target.value);
-  };
+function App() {
+  const [count, setCount] = useState(0)
 
   return (
-    <div>
+    <>
       <div>
-        <input
-          type="text"
-          value={serverUrl}
-          onChange={(e) => setServerUrl(e.target.value)}
-        />
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
       </div>
-      <div>
-        <button onClick={() => setShowChat((s) => !s)}>
-          {showChat ? "Hide Chat Room" : "Show Chat Room"}
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
         </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
       </div>
-      {showChat && (
-        <>
-          <hr />
-          <div>
-            Select Chat Room:{" "}
-            <select onChange={handleRoomChange}>
-              <option value="general">General</option>
-              <option value="travel">Travel</option>
-              <option value="music">Music</option>
-            </select>
-          </div>
-
-          <ChatRoom roomId={roomId} serverUrl={serverUrl} />
-        </>
-      )}
-    </div>
-  );
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
+
+export default App
