@@ -42,7 +42,17 @@ const useWeather = () => {
       const data = await response.json();
       const updatedWeatherData = {
         ...weatherData,
-        location: data.name,
+        location: data?.name,
+        climate: data?.weather[0]?.main,
+        temperature: data?.main?.temp,
+        maxTemperature: data?.main?.temp_max,
+        minTemperature: data?.main?.temp_min,
+        humidity: data?.main?.humidity,
+        cloudPercentage: data?.clouds?.all,
+        wind: data?.wind?.speed,
+        time: data?.dt,
+        longitude: longitude,
+        latitude: latitude,
       };
     } catch (error) {
       setError(error);
