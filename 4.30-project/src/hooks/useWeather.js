@@ -11,7 +11,11 @@ const useWeather = () => {
     cloudPercentage: "",
     wind: "",
     time: "",
+    longitude: "",
+    latitude: "",
   });
+
+  const [loading, setLoading] = useState(false);
 };
 
 export default useWeather;
