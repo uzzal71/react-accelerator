@@ -22,7 +22,7 @@ const useWeather = () => {
 
   const [error, setError] = useState(null);
 
-  const fetchWeatherData = async () => {};
+  const fetchWeatherData = async (latitude, longitude) => {};
 };
 
 export default useWeather;
