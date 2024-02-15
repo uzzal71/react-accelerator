@@ -21,6 +21,8 @@ const useWeather = () => {
   });
 
   const [error, setError] = useState(null);
+
+  const fetchWeatherData = async () => {};
 };
 
 export default useWeather;
