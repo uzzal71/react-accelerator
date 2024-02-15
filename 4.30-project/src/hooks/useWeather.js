@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { LocationContext } from "../context";
 
 const useWeather = () => {
   const [weatherData, setWeatherData] = useState({
@@ -14,7 +15,6 @@ const useWeather = () => {
     longitude: "",
     latitude: "",
   });
-
   const [loading, setLoading] = useState({
     state: false,
     message: "",
@@ -22,16 +22,20 @@ const useWeather = () => {
 
   const [error, setError] = useState(null);
 
+  const { selectedLocation } = useContext(LocationContext);
+
   const fetchWeatherData = async (latitude, longitude) => {
     try {
       setLoading({
         ...loading,
         state: true,
-        message: "Fetching weather data",
+        message: "Fetching weather data...",
       });
-      const apiKey = "656ba086bfaa96c2b8502189572097b8";
+
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${
+          import.meta.env.VITE_WEATHER_API_KEY
+        }&units=metric`
       );
 
       if (!response.ok) {
@@ -40,7 +44,8 @@ const useWeather = () => {
       }
 
       const data = await response.json();
-      const updatedWeatherData = {
+
+      const updateWeatherData = {
         ...weatherData,
         location: data?.name,
         climate: data?.weather[0]?.main,
@@ -54,8 +59,9 @@ const useWeather = () => {
         longitude: longitude,
         latitude: latitude,
       };
-    } catch (error) {
-      setError(error);
+      setWeatherData(updateWeatherData);
+    } catch (err) {
+      setError(err);
     } finally {
       setLoading({
         ...loading,
@@ -63,6 +69,28 @@ const useWeather = () => {
         message: "",
       });
     }
+  };
+
+  useEffect(() => {
+    setLoading({
+      ...loading,
+      state: true,
+      message: "Finding location...",
+    });
+
+    if (selectedLocation.latitude && selectedLocation.longitude) {
+      fetchWeatherData(selectedLocation.latitude, selectedLocation.longitude);
+    } else {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        fetchWeatherData(position.coords.latitude, position.coords.longitude);
+      });
+    }
+  }, [selectedLocation.latitude, selectedLocation.longitude]);
+
+  return {
+    weatherData,
+    error,
+    loading,
   };
 };
 
