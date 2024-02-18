@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 export default function Root() {
-  const { contacts } = useLoaderData();
+  const { contacts, q } = useLoaderData();
   const navigation = useNavigation();
 
   return (
