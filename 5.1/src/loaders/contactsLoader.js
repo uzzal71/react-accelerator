@@ -5,9 +5,6 @@ export async function getContactsLoader({ request }) {
   const q = url.searchParams.get("q");
   const contacts = await getContacts(q);
   return { contacts };
-
-  const contacts = await getContacts();
-  return { contacts };
 }
 
 export async function getContactLoader({ params }) {
