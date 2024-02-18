@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Form,
   NavLink,
@@ -9,6 +10,10 @@ import {
 export default function Root() {
   const { contacts, q } = useLoaderData();
   const navigation = useNavigation();
+
+  useEffect(() => {
+    document.getElementById("q").value = q;
+  }, [q]);
 
   return (
     <>
