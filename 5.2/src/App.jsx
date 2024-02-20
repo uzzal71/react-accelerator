@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import api from "./api/api";
 import AddPost from "./components/AddPost";
 import EditPost from "./components/EditPost";
 import Posts from "./components/Posts";
+import initialPosts from "./data/db.js";
 
 function App() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(initialPosts);
   const [post, setPost] = useState(null);
   const [error, setError] = useState(null);
 
@@ -54,21 +55,21 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await api.get("/posts");
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     try {
+  //       const response = await api.get("/posts");
 
-        if (response && response.data) {
-          setPosts(response.data);
-        }
-      } catch (err) {
-        setError(err.message);
-      }
-    };
+  //       if (response && response.data) {
+  //         setPosts(response.data);
+  //       }
+  //     } catch (err) {
+  //       setError(err.message);
+  //     }
+  //   };
 
-    fetchPosts();
-  }, []);
+  //   fetchPosts();
+  // }, []);
 
   return (
     <div>
