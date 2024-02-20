@@ -7,7 +7,7 @@ function App() {
         <h1>API Request Axios</h1>
         <hr />
         <div>
-          <Posts />
+          <Posts onDeletePost={""} onEditClick={""} />
         </div>
       </div>
     </div>
