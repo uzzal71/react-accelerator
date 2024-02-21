@@ -67,7 +67,7 @@ function App() {
         setError(err.message);
       }
     };
-
+    // Call fetch posts
     fetchPosts();
   }, []);
 
